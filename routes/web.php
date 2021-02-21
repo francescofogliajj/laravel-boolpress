@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', 'PostController');
+
+Route::get('blog/{slug}', 'BlogController@show')->name('post');
+
+Route::post('blog/{id}/comment', 'BlogController@addComment')->name('add-comment');
