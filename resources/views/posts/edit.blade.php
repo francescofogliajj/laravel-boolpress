@@ -48,6 +48,24 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror --}}
 
+        <div class="form-group">
+            <label for="post_status">Stato del post</label>
+            <select class="custom-select" name="post_status" id="post_status">
+                <option value="draft" {{ ($post->infoPost->post_status == 'draft') ? 'selected' : '' }}>draft</option>
+                <option value="private" {{ ($post->infoPost->post_status == 'private') ? 'selected' : '' }}>private</option>
+                <option value="public" {{ ($post->infoPost->post_status == 'public') ? 'selected' : '' }}>public</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comment_status">Stato dei commenti</label>
+            <select class="custom-select" name="comment_status" id="comment_status">
+                <option value="open" {{ ($post->infoPost->comment_status == 'open') ? 'selected' : '' }}>open</option>
+                <option value="closed" {{ ($post->infoPost->comment_status == 'closed') ? 'selected' : '' }}>closed</option>
+                <option value="private" {{ ($post->infoPost->comment_status == 'private') ? 'selected' : '' }}>private</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Salva</button>
         <a href="{{ route('posts.index') }}" class="btn btn-secondary">Indietro</a>
     </form>

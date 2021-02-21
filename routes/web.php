@@ -22,3 +22,7 @@ Route::resource('posts', 'PostController');
 Route::get('blog/{slug}', 'BlogController@show')->name('post');
 
 Route::post('blog/{id}/comment', 'BlogController@addComment')->name('add-comment');
+
+// Route::fallback(function () {
+//     return "<img src='https://blog.reyboz.it/files/2011/02/homer-simpson-doh-reyboz-blog.png'>";
+// });

@@ -10,7 +10,8 @@ class Post extends Model
         'title',
         'subtitle',
         'text',
-        'author'
+        'author',
+        'slug'
     ];
 
     public function infoPost() {

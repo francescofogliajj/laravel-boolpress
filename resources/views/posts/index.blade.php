@@ -14,6 +14,7 @@
                 <th>Autore</th>
                 <th>Creato il</th>
                 <th>Aggiornato il</th>
+                <th>Status</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -28,6 +29,7 @@
                     <td>{{ $post->author }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>{{ $post->updated_at }}</td>
+                    <td>{{ $post->infopost->post_status }}</td>
                     <td>
                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">
                             <i class="fas fa-search-plus"></i>

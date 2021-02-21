@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\InfoPost;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    private $postValidation = [
+        'title' => 'required',
+        'subtitle' => 'required',
+        'text' => 'required',
+        'author' => 'required'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -39,10 +47,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data["slug"] = Str::slug($data["title"]);
+
+        $request->validate($this->postValidation);
+
 
         $post = new Post();
         $post->fill($data);
-        $result = $post->save();
+        $postSaveResult = $post->save();
+
+
+        $data["post_id"] = $post->id;
+        $infoPost = new InfoPost();
+        $infoPost->fill($data);
+        $infoPostSaveResult = $infoPost->save();
+
 
         return redirect()
             ->route('posts.index')
@@ -81,8 +100,17 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
+        $data["slug"] = Str::slug($data["title"]);
+
+        $request->validate($this->postValidation);
 
         $post->update($data);
+
+
+        $infoPost = InfoPost::where('post_id', $post->id)->first();
+        $data["post_id"] = $post->id;
+        $infopost->update($data);
+
 
         return redirect()
             ->route('posts.index')
