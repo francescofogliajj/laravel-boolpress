@@ -29,6 +29,6 @@
 
 @section('footer')
     <div class="text-right">
-        <a href="{{ route('posts.index') }}" class="btn btn-lg btn-primary">Posts</a>
+        <a href="{{ route('posts.index') }}" class="btn btn-lg btn-primary">Indietro</a>
     </div>
 @endsection

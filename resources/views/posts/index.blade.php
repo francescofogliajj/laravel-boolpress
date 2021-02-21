@@ -15,6 +15,8 @@
                 <th>Creato il</th>
                 <th>Aggiornato il</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,9 +32,29 @@
                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">
                             <i class="fas fa-search-plus"></i>
                         </a>
-                    </td> 
+                    </td>
+                    <td>
+                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onSubmit="return confirm('Sei sicuro di voler eliminare questo post?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>  
                 </tr> 
             @endforeach
         </tbody>
     </table>
+@endsection
+
+@section('footer')
+    <div class="text-right">
+        <a href="{{ route('posts.create') }}" class="btn btn-lg btn-primary">Crea un post</a>
+    </div>
 @endsection

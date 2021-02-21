@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,7 +38,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $post = new Post();
+        $post->fill($data);
+        $result = $post->save();
+
+        return redirect()
+            ->route('posts.index')
+            ->with('message', "Post '". $post->name ."' creato correttamente!");
     }
 
     /**
@@ -58,9 +66,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -70,9 +78,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        $post->update($data);
+
+        return redirect()
+            ->route('posts.index')
+            ->with('message', "Post '". $post->name ."' aggiornato correttamente!");
     }
 
     /**
@@ -81,8 +95,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $name = $post->name;
+        $post->delete();
+
+        return redirect()
+            ->route('posts.index')
+            ->with('message', "Post '". $name ."' eliminato correttamente!");
     }
 }
