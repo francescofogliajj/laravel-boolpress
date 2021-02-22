@@ -7,6 +7,13 @@
             <h1 class="mt-5">{{ $post->title }}</h1>
             <h3>{{ $post->subtitle }}</h3>
             <small>{{ $post->author }}</small>
+            {{-- <small>{{ $post->infoPost->post_status }} - {{ $post->infoPost->comment_status }}</small> --}}
+
+            <div class="text-center">
+                @foreach ($post->tags as $tag)
+                    <span class="badge badge-info">{{ $tag->name }}</span>
+                @endforeach
+            </div>
         </header>
         <main>
             {{ $post->text }}
@@ -40,5 +47,9 @@
             </form>
         </section>
     {{-- @endif --}}
+
+    @section('footer')
+        <a class="btn btn-primary" href="{{ route('blog') }}">Blog</a> 
+    @endsection
     
 @endsection

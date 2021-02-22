@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    {{-- @if ($errors->any())
+    @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -13,7 +13,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif --}}
+    @endif
 
     <form action="{{ route('posts.update', $post->id) }}" method="POST">
         @csrf
@@ -65,6 +65,16 @@
                 <option value="private" {{ ($post->infoPost->comment_status == 'private') ? 'selected' : '' }}>private</option>
             </select>
         </div>
+
+        <h2 class="mt-4">Tags</h2>
+        @foreach ($tags as $tag)
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" @if($post->tag->contains($tag->id)) checked @endif>
+                    <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                </div>
+            </div>
+        @endforeach
 
         <button type="submit" class="btn btn-primary">Salva</button>
         <a href="{{ route('posts.index') }}" class="btn btn-secondary">Indietro</a>
