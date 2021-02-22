@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\InfoPost;
+use App\Tag;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
     private $postValidation = [
-        'title' => 'required',
-        'subtitle' => 'required',
-        'text' => 'required',
-        'author' => 'required'
+        'title' => 'required|string|max:100',
+        'subtitle' => 'required|string|max:150',
+        'text' => 'required|string',
+        'author' => 'required|string|max:60'
     ];
     /**
      * Display a listing of the resource.
@@ -35,7 +36,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -61,6 +63,11 @@ class PostController extends Controller
         $infoPost = new InfoPost();
         $infoPost->fill($data);
         $infoPostSaveResult = $infoPost->save();
+
+
+        if ($postSaveResult && !empty($data["tags"])) {
+            $post->tags()->attach($data["tags"]);
+        }
 
 
         return redirect()
@@ -107,8 +114,9 @@ class PostController extends Controller
         $post->update($data);
 
 
-        $infoPost = InfoPost::where('post_id', $post->id)->first();
-        $data["post_id"] = $post->id;
+        $infoPost = $post->infoPost;
+        // $infoPost = InfoPost::where('post_id', $post->id)->first();
+        // $data["post_id"] = $post->id;
         $infopost->update($data);
 
 
