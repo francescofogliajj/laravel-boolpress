@@ -86,13 +86,13 @@
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" id="image-{{ $image->id }}" name="images[]" value="{{ $image->id }}">
                     <label class="custom-control-label" for="image-{{ $image->id }}">{{ $image->alt }}
-                        <img src="{{ $image->link }}" alt="{{ $image->alt }}" style="width: 100px">
+                        <img src="{{ $image->link }}" alt="{{ $image->alt }}" style="width: 50px">
                     </label>
                 </div>
             </div>
         @endforeach
         
-        <div class="mt-4">
+        <div class="my-5">
             <button type="submit" class="btn btn-primary">Invia</button>
             <a href="{{ route('posts.index') }}" class="btn btn-secondary">Indietro</a>
         </div>

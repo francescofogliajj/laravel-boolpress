@@ -28,6 +28,7 @@
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->subtitle }}</td>
+                    {{-- <td>{{ substr($post->subtitle, 0, 10) . "..." }}</td> --}}
                     <td>{{ $post->author }}</td>
                     <td><img src="{{ $post->img_path }}" alt="{{ $post->title }}" style="height: 50px"></td>
                     <td>{{ $post->pubblication_date }}</td>

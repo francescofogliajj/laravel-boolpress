@@ -18,6 +18,19 @@
         </header>
         <main>
             {{ $post->text }}
+
+            <div class="container my-4">
+                <div class="row justify-content-center">
+                    @foreach ($post->images as $image)
+                        <div class="col-4">
+                            <figure>
+                                <img src="{{ $image->link }}" alt="{{ $image->alt }}" class="img-fluid">
+                                <figcaption>{{ $image->caption }}</figcaption>
+                            </figure>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </main>
     </section>
 
@@ -26,7 +39,7 @@
             <h2>Commenti</h2>
             @foreach ($post->comments as $comment)
                 <div>
-                    <small>{{ $comment->author }} - {{ $comment->created_at }}</small>
+                    <small>{{ $comment->author }} - {{ $comment->created_at->diffForHumans() }}</small>
                     <p>{{ $comment->text }}</p>
                 </div>
             @endforeach

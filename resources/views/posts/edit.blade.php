@@ -80,7 +80,21 @@
             </div>
         @endforeach
 
-        <button type="submit" class="btn btn-primary">Salva</button>
-        <a href="{{ route('posts.index') }}" class="btn btn-secondary">Indietro</a>
+        <h2 class="mt-4">Immagini</h2>
+        @foreach ($images as $image)
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="image-{{ $image->id }}" name="images[]" value="{{ $image->id }}" @if ($post->images->contains($image->id)) checked @endif>
+                    <label class="custom-control-label" for="image-{{ $image->id }}">{{ $image->alt }}
+                        <img src="{{ $image->link }}" alt="{{ $image->alt }}" style="width: 50px">
+                    </label>
+                </div>
+            </div>
+        @endforeach
+
+        <div class="my-5">
+            <button type="submit" class="btn btn-primary">Salva</button>
+            <a href="{{ route('posts.index') }}" class="btn btn-secondary">Indietro</a>
+        </div>
     </form>
 @endsection
