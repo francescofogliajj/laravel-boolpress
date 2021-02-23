@@ -12,6 +12,8 @@
                 <th>Titolo</th>
                 <th>Sottotitolo</th>
                 <th>Autore</th>
+                <th>Immagine</th>
+                <th>Data di pubblicazione</th>
                 <th>Creato il</th>
                 <th>Aggiornato il</th>
                 <th>Status</th>
@@ -27,6 +29,8 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->subtitle }}</td>
                     <td>{{ $post->author }}</td>
+                    <td><img src="{{ $post->img_path }}" alt="{{ $post->title }}" style="height: 50px"></td>
+                    <td>{{ $post->pubblication_date }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>{{ $post->updated_at }}</td>
                     <td>{{ $post->infopost->post_status }}</td>

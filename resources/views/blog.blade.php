@@ -7,7 +7,7 @@
             @foreach ($posts as $post)
                 <div class="col-4 my-3 d-flex align-content-stretch">
                     <div class="card">
-                        {{-- <img src="{{ $post->img_path }}" class="card-img-top" alt="{{ $post->title }}"> --}}
+                        <img src="{{ $post->img_path }}" class="card-img-top" alt="{{ $post->title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <h6 class="card-title">{{ $post->subtitle }}</h6>

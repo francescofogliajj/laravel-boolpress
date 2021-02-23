@@ -31,10 +31,7 @@
             <label for="subtitle">Sottotitolo</label>
             <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Sottotitolo" value="{{ $post->subtitle }}">
         </div>
-        {{-- @error('subtitle')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
-
+        
         <div class="form-group">
             <label for="text">Testo</label>
             <textarea class="form-control" name="text" id="text" rows="10">{{ $post->text }}</textarea>
@@ -44,9 +41,16 @@
             <label for="author">Autore</label>
             <input type="text" class="form-control" name="author" id="author" placeholder="Autore" value="{{ $post->author }}">
         </div>
-        {{-- @error('author')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
+
+        <div class="form-group">
+            <label for="img_path">Immagine</label>
+            <input type="text" class="form-control" name="img_path" id="img_path" placeholder="Immagine" value="{{ $post->img_path }}">
+        </div>
+
+        <div class="form-group">
+            <label for="pubblication_date">Data di pubblicazione</label>
+            <input type="date" class="form-control" name="pubblication_date" id="pubblication_date" placeholder="Data di pubblicazione" value="{{ $post->pubblication_date }}">
+        </div>
 
         <div class="form-group">
             <label for="post_status">Stato del post</label>
@@ -70,7 +74,7 @@
         @foreach ($tags as $tag)
             <div class="form-group">
                 <div class="custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" @if($post->tag->contains($tag->id)) checked @endif>
+                    <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" @if($post->tags->contains($tag->id)) checked @endif>
                     <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
                 </div>
             </div>

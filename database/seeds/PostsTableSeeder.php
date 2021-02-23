@@ -24,6 +24,8 @@ class PostsTableSeeder extends Seeder
             $newPost->subtitle = $faker->sentence(10);
             $newPost->text = $faker->text(2500);
             $newPost->author = $faker->name();
+            $newPost->img_path = $faker->imageURL(640,480,'technics');
+            $newPost->pubblication_date = $faker->date('Y-m-d');
             $newPost->created_at = $date;
             $newPost->updated_at = $date;
             $newPost->save();

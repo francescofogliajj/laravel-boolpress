@@ -31,9 +31,6 @@
             <label for="subtitle">Sottotitolo</label>
             <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Sottotitolo" value="{{ old('subtitle') }}">
         </div>
-        {{-- @error('subtitle')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
 
         <div class="form-group">
             <label for="text">Testo</label>
@@ -44,9 +41,16 @@
             <label for="author">Autore</label>
             <input type="text" class="form-control" name="author" id="author" placeholder="Autore" value="{{ old('author') }}">
         </div>
-        {{-- @error('author')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
+
+        <div class="form-group">
+            <label for="img_path">Immagine</label>
+            <input type="text" class="form-control" name="img_path" id="img_path" placeholder="Immagine" value="{{ old('img_path') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="pubblication_date">Data di pubblicazione</label>
+            <input type="date" class="form-control" name="pubblication_date" id="pubblication_date" placeholder="Data di pubblicazione" value="{{ old('pubblication_date') }}">
+        </div>
 
         <div class="form-group">
             <label for="post_status">Stato del post</label>

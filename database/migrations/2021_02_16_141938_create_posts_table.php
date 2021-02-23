@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('subtitle');
             $table->text('text');
             $table->string('author', 40);
+            $table->string('img_path');
+            $table->date('pubblication_date');
             $table->timestamps();
         });
     }

@@ -4,9 +4,10 @@
 
     <section>
         <header class="text-center mb-5">
-            <h1 class="mt-5">{{ $post->title }}</h1>
+            <img src="{{ $post->img_path }}" alt="{{ $post->title }}" class="my-3">
+            <h1>{{ $post->title }}</h1>
             <h3>{{ $post->subtitle }}</h3>
-            <small>{{ $post->author }}</small>
+            <small>{{ $post->author }} - {{ $post->pubblication_date }}</small>
             {{-- <small>{{ $post->infoPost->post_status }} - {{ $post->infoPost->comment_status }}</small> --}}
 
             <div class="text-center">

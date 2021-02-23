@@ -15,7 +15,9 @@ class PostController extends Controller
         'title' => 'required|string|max:100',
         'subtitle' => 'required|string|max:150',
         'text' => 'required|string',
-        'author' => 'required|string|max:60'
+        'author' => 'required|string|max:60',
+        'img_path' => 'required|string',
+        'pubblication_date' => 'required|date'
     ];
     /**
      * Display a listing of the resource.
