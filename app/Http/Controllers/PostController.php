@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\InfoPost;
 use App\Tag;
+use App\Image;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -39,7 +40,8 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        return view('posts.create', compact('tags'));
+        $images = Image::all();
+        return view('posts.create', compact('tags', 'images'));
     }
 
     /**

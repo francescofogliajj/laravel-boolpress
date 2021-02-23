@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $with = ['tags'];
+
     protected $fillable = [
         'title',
         'subtitle',
         'text',
         'author',
+        'img_path',
+        'pubblication_date',
         'slug'
     ];
 
@@ -24,5 +28,9 @@ class Post extends Model
 
     public function tags() {
         return $this->belongsToMany('App\Tag');
+    }
+
+    public function images() {
+        return $this->belongsToMany('App\Image');
     }
 }

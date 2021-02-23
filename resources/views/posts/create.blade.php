@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('header')
-    <h1 class="mt-5">Crea</h1>
+    <h1>Crea</h1>
 @endsection
 
 @section('content')
@@ -76,6 +76,18 @@
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
                     <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                </div>
+            </div>
+        @endforeach
+
+        <h2 class="mt-4">Immagini</h2>
+        @foreach ($images as $image)
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="image-{{ $image->id }}" name="images[]" value="{{ $image->id }}">
+                    <label class="custom-control-label" for="image-{{ $image->id }}">{{ $image->alt }}
+                        <img src="{{ $image->link }}" alt="{{ $image->alt }}" style="width: 100px">
+                    </label>
                 </div>
             </div>
         @endforeach

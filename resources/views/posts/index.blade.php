@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('header')
-    <h1 class="mt-5">Posts</h1>
+    <h1>Posts</h1>
 @endsection
 
 @section('content')

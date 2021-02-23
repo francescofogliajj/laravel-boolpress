@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('header')
-    <h1 class="mt-5">Post</h1>
-    <p class="mt-4"><strong>Post status: </strong>{{ $post->infoPost->post_status }}</p>
-    <p class="mb-4"><strong>Comment status: </strong>{{ $post->infoPost->comment_status }}</p>
+    <h1 class="mb-4">Post</h1>
+    <p><strong>Post status: </strong>{{ $post->infoPost->post_status }}</p>
+    <p><strong>Comment status: </strong>{{ $post->infoPost->comment_status }}</p>
 @endsection
 
 @section('content')
