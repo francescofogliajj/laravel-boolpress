@@ -129,7 +129,7 @@ class PostController extends Controller
         $infoPost = $post->infoPost;
         // $infoPost = InfoPost::where('post_id', $post->id)->first();
         // $data["post_id"] = $post->id;
-        $infopost->update($data);
+        $infoPost->update($data);
 
 
         if (empty($data["tags"])) {
